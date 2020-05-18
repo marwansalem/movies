@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    {{category_details.name}}
+{% endblock title %}
+    
+{% block content %}
+<h1>Category: {{category_details.id}} 
+    {{category_details.name}}
+</h1>
+<h2>{{category_details.content}}</h2>
+<h3>Products in {{category_details.name}}</h3>
+<table border="1">
+    <tr>
+        <td>name</td>
+        <td>price</td>
+    </tr>
+    
+    {% for pro in category_details.categories.all  %}
+    <tr>
+        <td>{{pro.name}}</td>
+        <td>{{pro.price}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{%url 'update' pk=category_details.id %}">Update</a>
+<a href="{%url 'delete' pk=category_details.id %}">Delete</a>
+{% endblock content %}
