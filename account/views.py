@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm, ProfileForm
 from .models import Account
+from review.models import UserReview
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
 def register(request):
@@ -28,3 +30,18 @@ def register(request):
         profileform = ProfileForm()
     return render(request,'register.html', {'userform':userform,
     'profileform':profileform})
+
+class UserDetailView(DetailView):
+    model = Account
+
+class UserReviewsListView(ListView):
+    paginate_by = 10
+    context_object_name='review_context'
+    template_tag = 'review_list.html'
+    model = UserReview
+    ordering = ['user_rating']
+    def get_context_data(self,  **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['accs'] = Account
+       
+        return context
