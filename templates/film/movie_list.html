@@ -10,7 +10,7 @@
 <table>
 {% for movie in page_obj %}
     <tr>
-        <td><img src={{movie.omdb_id|poster_url}} alt="default_movie.png"></td>
+        <td><img src={{movie.omdb_id|poster_url}} alt="/static/default_movie.png"></td>
         
         {% comment %}
         <td><a href="{%url 'movie_details' slug=movie.slug %}">{{movie.title}}</a></td>
