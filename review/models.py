@@ -13,7 +13,7 @@ class UserReview(models.Model):
     review_body = models.TextField(max_length=500)
     user_rating = models.CharField(max_length=1, choices=(('0','0'),('1','1'),('2','2'),('3','3'),('4','4'),('5','5')) )
     date_created = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField( null=True, blank=True, )
+    slug = models.SlugField(primary_key=True )
     def get_absolute_url(self):#cbv 37 
         return reverse('review_details', kwargs={"slug": self.slug})
     def __str__(self):

@@ -3,7 +3,8 @@ from django.views.generic import CreateView,DetailView,DeleteView
 from .models import UserReview
 from film.models import Movie
 from account.models import Account
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 class UserReviewCreateView(CreateView):
@@ -15,7 +16,7 @@ class UserReviewCreateView(CreateView):
         acc = Account.objects.get(user=user)
         
         if len(UserReview.objects.filter(author=acc,movie=movie))!=0:
-            form.valid = False
+            return HttpResponseRedirect('/movies')
         
         
         form.instance.author = acc 
@@ -30,3 +31,6 @@ class UserReviewDeleteView(DeleteView):
     model = UserReview
     # bcuz after deleting u cant return to the deleted category page
     success_url = reverse_lazy('movies')
+
+
+    
