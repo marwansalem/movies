@@ -28,7 +28,8 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('movies/', include('film.urls'), name='movies'),
     path('reviews/', include('review.urls')),
-    path('', MovieListView.as_view())
+    path('', MovieListView.as_view()),
+    path('', include('movie-api.urls'))
 
 ]
 
