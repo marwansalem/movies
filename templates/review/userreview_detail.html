@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{user_review.title}}
+{% endblock title %}
+{% load app_filters %}
+{% block content %}
+<h1>{{userreview.author.user.username}}<h1></h1>
+<h2>Your Rating: {{userreview.user_ratin}} </h2>
+<br>
+<img src={{userrreview.movie.omdb_id|poster_url}} alt="No Poster!">
+<h3>Your Review:</h3>
+<p>{{userreview.review_body}}</p>
+
+<a href="{%url 'delete_review' slug=userreview.slug %}">Delete</a>
+{% endblock content %}
+

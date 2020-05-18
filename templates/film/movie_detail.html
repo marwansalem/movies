@@ -12,5 +12,5 @@
 <li>Year: {{movie.year}}</li>
 <li>Genre: {{movie.genre}}</li>
 <li>Rating: {{movie.rating}}</li>
-
+<a href="{%url 'create_review' omdb_id=movie.omdb_id %}"><h2>Review Movie?</h2></a>
 {% endblock content %}

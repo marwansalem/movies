@@ -11,4 +11,5 @@ class MovieListView(ListView):
     ordering = ['title']
 
 class MovieDetailView(DetailView):
+    #context_object_name='movie_details'
     model = Movie

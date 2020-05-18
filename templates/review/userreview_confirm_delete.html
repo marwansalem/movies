@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Deleting Review!
+{% endblock title %}
+    
+{% block content %}
+
+<h1>Are you sure you want to delete {{userreview}}?</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="delete">
+    <a href="{% url 'review_details' slug=userreview.slug  %}">Cancel</a>
+</form>
+
+
+{% endblock content %}

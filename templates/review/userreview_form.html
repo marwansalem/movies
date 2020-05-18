@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Creating Review
+{% endblock title %}
+
+{% block content %}
+
+{% if form.instance.pk %}
+<h1>Update Review</h1>
+{% else %}
+<h1>Create Review</h1>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-success">Submit Movie Review</button>
+</form>
+{% endblock content %}
